@@ -1,0 +1,58 @@
+<style>
+    .register {
+        padding-top: 3rem;
+    }
+
+    .errors {
+        color: red;
+    }
+</style>
+
+<div class="register">
+    <form action="" method="POST" onsubmit='return check(this);'>
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" name="name" class="form-control" />
+            <p id="errors" class="errors"></p>
+        </div>
+        <div class="form-group">
+            <label for="email">Email: </label>
+            <input type="email" name="email" class="form-control" />
+            <p id="errors" class="errors"></p>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password: </label>
+            <input type="password" name="password" class="form-control" />
+            <p id="errors" class="errors"></p>
+        </div>
+
+        <button type="submit" name="submit" class="btn btn-primary">Submit Form</button>
+
+    </form>
+</div>
+
+<script>
+    function check(form) {
+        var msg = '';
+        if (emptyFied(form.name)) msg += 'Name field is empty';
+        if (emptyFied(form.email)) msg += 'Email field is empty';
+        if (emptyFied(form.password)) msg += 'Password field is empty';
+        if (msg === '') return true;
+        else {
+            //var displayError = document.getElementById('errors').innerHTML = msg;
+            alert(msg);
+            return false;
+        }
+    }
+
+    function emptyFied(e) {
+        var status = true;
+        for (i = 0; i < e.value.length; i++) {
+            if (e.value.charAt(i) != ' ')
+                status = false;
+            break;
+        }
+        return status;
+    }
+</script>
