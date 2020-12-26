@@ -1,4 +1,5 @@
-<style>
+<head>
+    <style>
     .form {
         justify-content: center;
         margin: 2rem;
@@ -20,8 +21,12 @@
         justify-content: space-around;
     }
 </style>
+    
+    <script src="validate.js></script>
+</head>
+
 <div class="form">
-    <form method="POST" action="" onsubmit="return validate(this);">
+    <form method="POST" action="" onsubmit="return validateMe(this);">
         <div class="form-group heading">
             <p>Register with us</p>
         </div>
@@ -49,31 +54,3 @@
         </div>
     </form>
 </div>
-
-<script>
-    /*VALIDATING FORM BEFORE SUBMITING*/
-    function validate(form) {
-        var displayErrorMessage = document.getElementById('errorMessage');
-        var message = '';
-        if (emptyField(form.name)) message += 'Name field is Empty,';
-        if (emptyField(form.email)) message += 'Email field is Empty,';
-        if (emptyField(form.password)) message += 'Password field is Empty';
-        if (message === '') return true;
-
-        else {
-            displayErrorMessage.innerHTML = message;
-            return false;
-        }
-    }
-
-    //MONITORING FOR EMPTY INPUTS
-    function emptyField(e) {
-        var status = true;
-        for (i = 0; i < e.value.length; i++) {
-            if (e.value.charAt(i) != ' ');
-            status = false;
-            break;
-        }
-        return status;
-    }
-</script>
